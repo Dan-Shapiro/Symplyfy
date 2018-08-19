@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable,
          :validatable, :confirmable
 
+  has_many :tasks
+
   validates :email, uniqueness: true
 
   def email_required?

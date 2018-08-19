@@ -1,0 +1,18 @@
+<div>
+	<h1><%= @task.name %></h1>
+	<h3><%= @task.start_date.to_formatted_s :rfc822 %> - <%= @task.end_date.to_formatted_s :rfc822 %></h3>
+</div>
+
+<h3>Parts</h3>
+<% @task.parts.each do |part| %>
+	<div>
+		<p>
+			<%= part.name %> (<%= pluralize(part.hours, 'hr') %> <%= pluralize(part.minutes, 'min') %>)
+		</p>
+	</div>
+<% end %>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-sm" %>
+<br>
+<%= link_to 'Back', tasks_path %>
